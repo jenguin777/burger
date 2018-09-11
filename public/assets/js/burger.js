@@ -33,11 +33,14 @@ $(function() {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
+      
+
       var newBurger = {
-        name: $("#burger-name").val().trim(),
-        devoured: $("[name=devoured]:checked").val().trim()
+        name: $("#burger-id").val().trim(),
+        devoured: 0
       };
-  
+
+        
       // Send the POST request.
       $.ajax("/api/burgers", {
         type: "POST",

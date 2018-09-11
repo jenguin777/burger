@@ -18,20 +18,20 @@ var burger = require("../models/burgerModel.js");
   
   router.post("/api/burgers", function(req, res) {
     burger.selectAll(function(data) {
-    burger.insertOne([
-      "burger_name", "devoured"
-    ], [
-      req.body.name, req.body.devoured
-    ], function(result) {
-      // Send back the ID of the new burger
-      res.json({ id: result.insertId });
+      burger.insertOne([
+        "burger_name", "devoured"
+      ], [
+        req.body.name, req.body.devoured
+      ], function(result) {
+        // Send back the ID of the new burger
+        res.json({ id: result.insertId });
+      });
     });
   });
   
-  router.put("/api/burgers/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
-  
-    console.log("condition", condition);
+  router.post("/api/update/burgers", function(req, res) {
+    var condition = 'id = ' + req.body.id;
+    console.log(req.body.devoured, "this is whatt we are sending")
   
     burger.updateOne({
       devoured: req.body.devoured
@@ -43,7 +43,6 @@ var burger = require("../models/burgerModel.js");
         res.status(200).end();
       }
     });
-  });
 });
 // Export routes for server.js to use.
 module.exports = router;

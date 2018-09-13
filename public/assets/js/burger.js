@@ -32,15 +32,24 @@ $(function() {
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
-  
-      
+
+      // trying to implement not null validation
+  //     if( !this.value ) {
+  //       $(this).parents('p').alert("You must enter a value");
+  // }   else {
+
+  //     var newBurger = {
+  //       name: $("#burger-id").val().trim(),
+  //       devoured: 0
+  //     };
+  //   }
+        
 
       var newBurger = {
-        name: $("#burger-id").val().trim(),
-        devoured: 0
+          name: $("#burger-id").val().trim(),
+          devoured: 0
       };
 
-        
       // Send the POST request.
       $.ajax("/api/burgers", {
         type: "POST",

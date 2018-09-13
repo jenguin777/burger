@@ -1,0 +1,19 @@
+body {
+    background-image: url("/assets/img/restaurant.png");
+ }
+
+ .card {
+     /* padding: 20px; */
+     height: 50%;
+ }
+
+ label {
+     color: black;
+     font-size: 20px;
+ }
+
+ span {
+    /* font-size: 30px !important; */
+ }
+
+ 

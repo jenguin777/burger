@@ -19,9 +19,11 @@ var burger = require("../models/burgerModel.js");
   router.post("/api/burgers", function(req, res) {
     burger.selectAll(function(data) {
       burger.insertOne([
-        "burger_name", "devoured"
+        // "burger_name", "devoured"
+        "burger_name"
       ], [
-        req.body.name, req.body.devoured
+        // req.body.name, req.body.devoured
+        req.body.name
       ], function(result) {
         // Send back the ID of the new burger
         res.json({ id: result.insertId });

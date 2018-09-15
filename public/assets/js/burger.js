@@ -32,23 +32,31 @@ $(function() {
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
+      var newBurger;
 
-      // trying to implement not null validation
-  //     if( !this.value ) {
-  //       $(this).parents('p').alert("You must enter a value");
-  // }   else {
+      var enteredName =  $("#burger-id").val().trim();
+      console.log("enteredName: " + enteredName);
+      var enteredNameLength = $("#burger-id").val().length;
+      console.log("enteredNameLength: " + enteredNameLength);
 
-  //     var newBurger = {
-  //       name: $("#burger-id").val().trim(),
-  //       devoured: 0
-  //     };
-  //   }
-        
+      // add client side validation for 1) not null and 2) > 35 chars - the database allows 35 as well
+      if(enteredName === '' || enteredNameLength > 35) {
 
-      var newBurger = {
-          name: $("#burger-id").val().trim(),
-          devoured: 0
-      };
+        // clear out the invalid value
+        $("#burger-id").val("");
+        // then display the alert message to the user
+        alert("You must enter a name between 1 and 35 characters");
+        // I thought that alert had an inherent return in it but apparently not...had to add this to prevent post from trying to enter a null name after clearing it out
+        return;
+      } else {
+
+        // var newBurger = {
+          newBurger = {
+            // name: $("#burger-id").val().trim(),
+            name: enteredName,
+            devoured: 0
+          };
+      }
 
       // Send the POST request.
       $.ajax("/api/burgers", {

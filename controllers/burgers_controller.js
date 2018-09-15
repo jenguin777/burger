@@ -17,23 +17,28 @@ var burger = require("../models/burgerModel.js");
   });
   
   router.post("/api/burgers", function(req, res) {
-    burger.selectAll(function(data) {
-      burger.insertOne([
-        // "burger_name", "devoured"
-        "burger_name"
-      ], [
-        // req.body.name, req.body.devoured
-        req.body.name
-      ], function(result) {
-        // Send back the ID of the new burger
-        res.json({ id: result.insertId });
+
+    // adding server-side validation for burger_name not null and burger_name < 36 chars
+    console.log("req object from within controller: " + req.body.name);
+    if(req.body.name === '' || req.body.name.length > 35) {
+      return res.status(404).end();
+    } else { // if it passes validation, insert the burger
+      burger.selectAll(function(data) {
+        burger.insertOne([
+          "burger_name"
+        ], [
+          req.body.name
+        ], function(result) {
+          // Send back the ID of the new burger
+          res.json({ id: result.insertId });
+        });
       });
-    });
+    }
   });
   
   router.post("/api/update/burgers", function(req, res) {
     var condition = 'id = ' + req.body.id;
-    console.log(req.body.devoured, "this is whatt we are sending")
+    console.log(req.body.devoured, "this is whatt we are sending");
   
     burger.updateOne({
       devoured: req.body.devoured

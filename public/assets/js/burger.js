@@ -14,11 +14,10 @@ $(function() {
         devoured: newDevoured
       };
   
-      // Send the PUT request.
+      // Send the PUT request...had trouble with this...tried $.post and it worked
       $.post("/api/update/burgers/", 
     //   $.ajax("/api/burgers/" + id, {
         newDevouredState
-       
       ).then(
         function(response) {
           console.log("changed devoured to", newDevouredState);
@@ -50,9 +49,8 @@ $(function() {
         return;
       } else {
 
-        // var newBurger = {
+        // var newBurger = {    --used this when testing my server side validation, commented out client side validation for testing server side validation
           newBurger = {
-            // name: $("#burger-id").val().trim(),
             name: enteredName,
             devoured: 0
           };

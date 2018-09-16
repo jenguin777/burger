@@ -28,4 +28,9 @@ body {
      padding: 1px;
  }
 
+ #github {
+    width: 100%;
+    color: black;
+    font-size: 18px;
+ }
  

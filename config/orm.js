@@ -79,7 +79,7 @@ var orm = {
     queryString += " WHERE ";
     queryString += condition;
 
-    console.log(queryString);
+    console.log("query string from updateOne in orm.js: " + queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;

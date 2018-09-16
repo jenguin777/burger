@@ -2,10 +2,18 @@ body {
     background-image: url("/assets/img/restaurant.png");
  }
 
- .card {
-     /* padding: 20px; */
-     height: 50%;
+ .container {
+     width: 90%;
  }
+
+ .card {
+     width: 600px;
+ }
+
+.card-image {
+    width: 30%;
+    height: 100%;
+}
 
  label {
      color: black;
@@ -14,6 +22,10 @@ body {
 
  span {
     font-size: 30px !important;
+ }
+
+ li {
+     padding: 1px;
  }
 
  

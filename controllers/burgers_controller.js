@@ -36,9 +36,25 @@ var burger = require("../models/burgerModel.js");
     }
   });
   
-  router.post("/api/update/burgers", function(req, res) {
-    var condition = 'id = ' + req.body.id;
-    console.log(req.body.devoured, "this is whatt we are sending");
+  // router.post("/api/update/burgers", function(req, res) {
+  //   var condition = 'id = ' + req.body.id;
+  //   console.log(req.body.devoured, "this is whatt we are sending");
+  
+  //   burger.updateOne({
+  //     devoured: req.body.devoured
+  //   }, condition, function(result) {
+  //     if (result.changedRows == 0) {
+  //       // If no rows were changed, then the ID must not exist, so 404
+  //       return res.status(404).end();
+  //     } else {
+  //       res.status(200).end();
+  //     }
+  //   });
+
+  router.put("/api/burgers/:id", function(req, res) {
+    console.log("req.params.id: " + req.params.id);
+    var condition = 'id = ' + req.params.id;
+    console.log("condition: " + condition);
   
     burger.updateOne({
       devoured: req.body.devoured
@@ -50,6 +66,7 @@ var burger = require("../models/burgerModel.js");
         res.status(200).end();
       }
     });
+
 });
 // Export routes for server.js to use.
 module.exports = router;
